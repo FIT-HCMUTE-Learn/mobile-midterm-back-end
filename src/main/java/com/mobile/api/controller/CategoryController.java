@@ -15,9 +15,11 @@ import com.mobile.api.model.criteria.CategoryCriteria;
 import com.mobile.api.model.entity.Category;
 import com.mobile.api.repository.AccountRepository;
 import com.mobile.api.repository.CategoryRepository;
+import com.mobile.api.repository.ProductRepository;
 import com.mobile.api.repository.UserRepository;
 import com.mobile.api.utils.ApiMessageUtils;
 import jakarta.validation.Valid;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +34,8 @@ import org.springframework.web.bind.annotation.*;
 public class CategoryController extends BaseController {
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ProductRepository productRepository;
     @Autowired
     private CategoryMapper categoryMapper;
 
@@ -82,7 +86,7 @@ public class CategoryController extends BaseController {
         Category category = categoryMapper.fromCreateCategoryForm(createCategoryForm);
         categoryRepository.save(category);
 
-        return ApiMessageUtils.success(null, "Create user successfully");
+        return ApiMessageUtils.success(null, "Create category successfully");
     }
 
     @PutMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -99,7 +103,7 @@ public class CategoryController extends BaseController {
                 throw new ResourceBadRequestException(ErrorCode.CATEGORY_NAME_EXISTED);
             }
         }
-        // Update USER
+        // Update CATEGORY
         categoryMapper.updateFromUpdateCategoryForm(category, updateCategoryForm);
         categoryRepository.save(category);
 
@@ -111,6 +115,10 @@ public class CategoryController extends BaseController {
     public ApiMessageDto<Void> delete(@PathVariable Long id) {
         categoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(ErrorCode.CATEGORY_NOT_FOUND));
+
+        if (productRepository.existsByCategoryId(id)) {
+            throw new ResourceBadRequestException(ErrorCode.CATEGORY_ERROR_CANT_DELETE_RELATIONSHIP_WITH_PRODUCT);
+        }
 
         // Delete CATEGORY
         categoryRepository.deleteById(id);
