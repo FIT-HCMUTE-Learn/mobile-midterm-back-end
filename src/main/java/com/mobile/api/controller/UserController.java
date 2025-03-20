@@ -21,6 +21,7 @@ import com.mobile.api.model.entity.Group;
 import com.mobile.api.repository.AccountRepository;
 import com.mobile.api.repository.GroupRepository;
 import com.mobile.api.repository.UserRepository;
+import com.mobile.api.security.custom.CustomRegisteredClientRepository;
 import com.mobile.api.service.EmailService;
 import com.mobile.api.utils.ApiMessageUtils;
 import jakarta.validation.Valid;
@@ -32,6 +33,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,9 +53,9 @@ public class UserController extends BaseController {
     @Autowired
     private UserMapper userMapper;
     @Autowired
-    private EmailService emailService;
-    @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private CustomRegisteredClientRepository customRegisteredClientRepository;
 
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('USE_LIS')")
@@ -143,11 +145,15 @@ public class UserController extends BaseController {
 
         // Update ACCOUNT
         Account account = user.getAccount();
+        RegisteredClient registeredClient = customRegisteredClientRepository.findByClientId(account.getUsername());
+        assert registeredClient != null;
         if (!Objects.equals(account.getUsername(), updateUserAdminForm.getUsername())) {
             if (accountRepository.existsByUsername(updateUserAdminForm.getUsername())) {
                 throw new BusinessException(ErrorCode.ACCOUNT_USERNAME_EXISTED);
             }
             account.setUsername(updateUserAdminForm.getUsername());
+            customRegisteredClientRepository.updateClientId(registeredClient.getId(),
+                    updateUserAdminForm.getUsername());
         }
         if (!Objects.equals(account.getEmail(), updateUserAdminForm.getEmail())) {
             if (accountRepository.existsByEmail(updateUserAdminForm.getEmail())) {
@@ -158,6 +164,8 @@ public class UserController extends BaseController {
         if (StringUtils.isNoneBlank(updateUserAdminForm.getPassword())) {
             if (!passwordEncoder.matches(updateUserAdminForm.getPassword(), account.getPassword())) {
                 account.setPassword(passwordEncoder.encode(updateUserAdminForm.getPassword()));
+                customRegisteredClientRepository.updateClientSecret(registeredClient.getId(),
+                        passwordEncoder.encode(updateUserAdminForm.getPassword()));
             }
         }
         account.setPhone(updateUserAdminForm.getPhone());
@@ -190,11 +198,15 @@ public class UserController extends BaseController {
 
         // Update ACCOUNT
         Account account = user.getAccount();
+        RegisteredClient registeredClient = customRegisteredClientRepository.findByClientId(account.getUsername());
+        assert registeredClient != null;
         if (!Objects.equals(account.getUsername(), updateUserForm.getUsername())) {
             if (accountRepository.existsByUsername(updateUserForm.getUsername())) {
                 throw new BusinessException(ErrorCode.ACCOUNT_USERNAME_EXISTED);
             }
             account.setUsername(updateUserForm.getUsername());
+            customRegisteredClientRepository.updateClientId(registeredClient.getId(),
+                    updateUserForm.getUsername());
         }
         if (!Objects.equals(account.getEmail(), updateUserForm.getEmail())) {
             if (accountRepository.existsByEmail(updateUserForm.getEmail())) {
@@ -205,6 +217,8 @@ public class UserController extends BaseController {
         if (StringUtils.isNoneBlank(updateUserForm.getPassword())) {
             if (!passwordEncoder.matches(updateUserForm.getPassword(), account.getPassword())) {
                 account.setPassword(passwordEncoder.encode(updateUserForm.getPassword()));
+                customRegisteredClientRepository.updateClientSecret(registeredClient.getId(),
+                        passwordEncoder.encode(updateUserForm.getPassword()));
             }
         }
         account.setPhone(updateUserForm.getPhone());
