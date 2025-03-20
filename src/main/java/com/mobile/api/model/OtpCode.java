@@ -1,4 +1,4 @@
-package com.mobile.api.model.entity;
+package com.mobile.api.model;
 
 import com.mobile.api.model.audit.Auditable;
 import jakarta.persistence.*;
@@ -9,23 +9,21 @@ import org.hibernate.annotations.GenericGenerator;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "db_mobile_midterm_user")
+@Table(name = "otp_codes")
 @Getter
 @Setter
-public class User extends Auditable<String> {
+public class OtpCode extends Auditable<String> {
     @Id
     @GeneratedValue(generator = "idGenerator")
     @GenericGenerator(name = "idGenerator", type = com.mobile.api.service.id.IdGenerator.class)
     private Long id;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
-    private Account account;
+    @Column(nullable = false, unique = true)
+    private String email;
 
-    private String fullName;
+    @Column(nullable = false)
+    private String otp;
 
-    private Integer gender;
-
-    private LocalDateTime birthday;
+    @Column(name = "expiry_time")
+    private LocalDateTime expiryTime;
 }
