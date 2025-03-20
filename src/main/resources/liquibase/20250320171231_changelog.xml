@@ -1,0 +1,94 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Authentication" id="1742490761335-1">
+        <createTable tableName="db_mobile_midterm_product">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="db_mobile_midterm_productPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_date" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="category_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-2">
+        <addColumn tableName="db_mobile_midterm_account">
+            <column name="avatarPath" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-3">
+        <addColumn tableName="db_mobile_midterm_account">
+            <column name="isSuperAdmin" type="bit"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-4">
+        <addColumn tableName="db_mobile_midterm_group">
+            <column name="isSystemGroup" type="bit"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-5">
+        <addColumn tableName="db_mobile_midterm_permission">
+            <column name="nameGroup" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-6">
+        <addColumn tableName="db_mobile_midterm_account">
+            <column name="resetPwdCode" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-7">
+        <addColumn tableName="db_mobile_midterm_account">
+            <column name="resetPwdTime" type="datetime(6)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-8">
+        <addColumn tableName="db_mobile_midterm_permission">
+            <column name="showMenu" type="bit"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-9">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="db_mobile_midterm_product" constraintName="FKkjpfumvvsr25xrekp194r9ehx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="db_mobile_midterm_category" validate="true"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-10">
+        <dropUniqueConstraint constraintName="client_id" tableName="oauth2_registered_client"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-11">
+        <dropTable tableName="oauth2_registered_client"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-12">
+        <dropColumn columnName="avatar_path" tableName="db_mobile_midterm_account"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-13">
+        <dropColumn columnName="is_super_admin" tableName="db_mobile_midterm_account"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-14">
+        <dropColumn columnName="is_system_group" tableName="db_mobile_midterm_group"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-15">
+        <dropColumn columnName="name_group" tableName="db_mobile_midterm_permission"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-16">
+        <dropColumn columnName="reset_pwd_code" tableName="db_mobile_midterm_account"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-17">
+        <dropColumn columnName="reset_pwd_time" tableName="db_mobile_midterm_account"/>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-18">
+        <dropColumn columnName="show_menu" tableName="db_mobile_midterm_permission"/>
+    </changeSet>
+</databaseChangeLog>
