@@ -12,11 +12,11 @@ public class EmailService {
     @Value("${spring.mail.username}")
     private String fromEmail;
 
-    public void sendOTP(String toEmail, String otp, Integer time) {
+    public void sendOTPEmail(String title, String toEmail, String otp, Integer time) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(fromEmail);
         message.setTo(toEmail);
-        message.setSubject("Your OTP Code for Password Reset");
+        message.setSubject(title);
         message.setText("Your OTP code is: " + otp + "\nThis code is valid for " + time + " minutes.");
 
         mailSender.send(message);

@@ -14,6 +14,7 @@ import com.mobile.api.utils.ApiMessageUtils;
 import com.mobile.api.utils.OtpUtils;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,8 @@ public class ForgotPasswordController extends BaseController {
     private EmailService emailService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Value("${otp.expiry.minutes.forgot-password}")
+    private int otpExpiryMinutes;
 
     @PostMapping(value = "/request-forgot-password", produces = MediaType.APPLICATION_JSON_VALUE)
     public ApiMessageDto<String> requestForgotPassword(
@@ -42,10 +45,10 @@ public class ForgotPasswordController extends BaseController {
 
         String otp = OtpUtils.generateOTP(6);
         account.setResetPwdCode(otp);
-        account.setResetPwdTime(LocalDateTime.now().plusMinutes(10));
+        account.setResetPwdTime(LocalDateTime.now().plusMinutes(otpExpiryMinutes));
         accountRepository.save(account);
 
-        emailService.sendOTP(requestForgotPasswordForm.getEmail(), otp, 10);
+        emailService.sendOTPEmail("Your OTP Code for Password Reset", requestForgotPasswordForm.getEmail(), otp, otpExpiryMinutes);
 
         return ApiMessageUtils.success(null, "OTP sent to email successfully.");
     }

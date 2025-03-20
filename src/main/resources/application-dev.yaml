@@ -64,6 +64,11 @@ open:
     serverUrl: ${SPRING_SERVER_URL}
     serverName: Server Test
 
+otp:
+  expiry.minutes:
+    register: 5
+    forgot-password: 5
+
 logging:
   file:
     path: logs/
