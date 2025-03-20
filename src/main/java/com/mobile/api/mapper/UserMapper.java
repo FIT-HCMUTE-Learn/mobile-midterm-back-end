@@ -2,6 +2,7 @@ package com.mobile.api.mapper;
 
 import com.mobile.api.dto.user.UserAdminDto;
 import com.mobile.api.dto.user.UserDto;
+import com.mobile.api.form.RegistrationForm;
 import com.mobile.api.form.user.CreateUserAdminForm;
 import com.mobile.api.form.user.CreateUserForm;
 import com.mobile.api.form.user.UpdateUserAdminForm;

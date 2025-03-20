@@ -30,6 +30,8 @@ public class Account extends Auditable<String> {
 
     private Boolean isSuperAdmin = false;
 
+    private Boolean verified = false;
+
     private String resetPwdCode;
 
     private LocalDateTime resetPwdTime;
