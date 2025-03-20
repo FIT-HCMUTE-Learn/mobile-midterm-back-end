@@ -8,7 +8,7 @@
 	<artifactId>com-mobile-api</artifactId>
 	<version>0.0.1</version>
 	<name>com-mobile-api</name>
-	<description>MoneyLover Application</description>
+	<description>Mobile Midterm Application</description>
 
 	<properties>
 		<java.version>17</java.version>
