@@ -31,4 +31,11 @@ public class BaseConstant {
     public static final Integer USER_GENDER_MALE = 1;
     public static final Integer USER_GENDER_FEMALE = 2;
     public static final Integer USER_GENDER_UNKNOWN = 3;
+
+    /**
+     * CATEGORY_KIND constants
+     */
+    public static final Integer CATEGORY_KIND_MAIN_DISH = 1;
+    public static final Integer CATEGORY_KIND_DRINK = 2;
+    public static final Integer CATEGORY_KIND_DESSERT = 3;
 }
