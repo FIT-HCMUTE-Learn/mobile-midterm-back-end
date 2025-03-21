@@ -4,9 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-# Ignore private/public keys
-src/main/resources/key/private.pem
-src/main/resources/key/public.pem
+# Ignore SSL keystore
+src/main/resources/keystore.p12
+src/main/resources/ssl/key.pem
+src/main/resources/ssl/cert.pem
 
 # Ignore environment file
 .env
