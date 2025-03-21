@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-@Schema(description = "Request Forgot Password Form")
+@Schema(description = "Forgot Password Form")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ForgotPasswordForm {
     @Schema(description = "Email", example = "user@example.com", requiredMode = Schema.RequiredMode.REQUIRED)
