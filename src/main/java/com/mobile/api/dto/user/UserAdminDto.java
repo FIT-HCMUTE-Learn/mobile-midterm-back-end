@@ -17,6 +17,9 @@ public class UserAdminDto extends BaseAdminDto {
     @Schema(description = "account")
     private AccountAdminDto account;
 
+    @Schema(description = "fullName")
+    private String fullName;
+
     @Schema(description = "gender")
     private Integer gender;
 

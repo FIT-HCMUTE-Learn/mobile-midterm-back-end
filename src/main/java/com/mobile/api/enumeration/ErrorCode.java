@@ -54,6 +54,19 @@ public enum ErrorCode {
     USER_USERNAME_EXISTED("ERROR-USER-0002", "User existed by username"),
     USER_EMAIL_EXISTED("ERROR-USER-0003", "User existed by email"),
     USER_NOT_MATCH_OLD_PASSWORD("ERROR-USER-0004", "Old password does not match"),
+
+    /**
+     * CATEGORY error codes
+     */
+    CATEGORY_NOT_FOUND("ERROR-CATEGORY-0001", "Category not found"),
+    CATEGORY_NAME_EXISTED("ERROR-CATEGORY-0002", "Category existed by name"),
+    CATEGORY_ERROR_CANT_DELETE_RELATIONSHIP_WITH_PRODUCT("ERROR-CATEGORY-0003", "Category relationship with product"),
+
+    /**
+     * PRODUCT error codes
+     */
+    PRODUCT_NOT_FOUND("PRODUCT-CATEGORY-0001", "Product not found"),
+    PRODUCT_NAME_EXISTED("PRODUCT-CATEGORY-0002", "Product existed by name"),
     ;
 
     private final String code;

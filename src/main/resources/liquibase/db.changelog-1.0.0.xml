@@ -29,6 +29,7 @@
             <column name="password" type="VARCHAR(255)"/>
             <column name="phone" type="VARCHAR(255)"/>
             <column name="username" type="VARCHAR(255)"/>
+            <column name="verified" type="bit"/>
             <column name="reset_pwd_code" type="VARCHAR(255)"/>
             <column name="reset_pwd_time" type="datetime"/>
             <column name="group_id" type="BIGINT"/>
@@ -118,6 +119,7 @@
             <column name="status" type="INT">
                 <constraints nullable="false"/>
             </column>
+            <column name="full_name" type="varchar(255)"/>
             <column name="birthday" type="datetime"/>
             <column name="gender" type="INT"/>
         </createTable>

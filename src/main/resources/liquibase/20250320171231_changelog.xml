@@ -1,16 +1,9 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <changeSet author="Authentication" id="1742488825363-1">
-        <createTable tableName="otp_codes">
+    <changeSet author="Authentication" id="1742490761335-1">
+        <createTable tableName="db_mobile_midterm_product">
             <column name="id" type="BIGINT">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="otp_codesPK"/>
-            </column>
-            <column name="email" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="expiry_time" type="datetime(6)"/>
-            <column name="otp" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="db_mobile_midterm_productPK"/>
             </column>
             <column name="created_by" type="VARCHAR(255)">
                 <constraints nullable="false"/>
@@ -27,6 +20,13 @@
             <column name="status" type="INT">
                 <constraints nullable="false"/>
             </column>
+            <column name="description" type="TEXT"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="category_id" type="BIGINT"/>
         </createTable>
+    </changeSet>
+    <changeSet author="Authentication" id="1742490761335-9">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="db_mobile_midterm_product" constraintName="FKkjpfumvvsr25xrekp194r9ehx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="db_mobile_midterm_category" validate="true"/>
     </changeSet>
 </databaseChangeLog>

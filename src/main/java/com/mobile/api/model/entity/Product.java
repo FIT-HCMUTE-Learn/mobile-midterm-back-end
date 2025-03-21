@@ -1,4 +1,4 @@
-package com.mobile.api.model;
+package com.mobile.api.model.entity;
 
 import com.mobile.api.model.audit.Auditable;
 import jakarta.persistence.*;
@@ -6,22 +6,20 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "otp_codes")
+@Table(name = "db_mobile_midterm_product")
 @Getter
 @Setter
-public class OtpCode extends Auditable<String> {
+public class Product extends Auditable<String> {
     @Id
     @GeneratedValue(generator = "idGenerator")
     @GenericGenerator(name = "idGenerator", type = com.mobile.api.service.id.IdGenerator.class)
     private Long id;
-
-    private String email;
-
-    private String otp;
-
-    @Column(name = "expiry_time")
-    private LocalDateTime expiryTime;
+    private String name;
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
+    private String image;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 }

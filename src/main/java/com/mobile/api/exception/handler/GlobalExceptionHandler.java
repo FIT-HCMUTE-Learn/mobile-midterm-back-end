@@ -4,6 +4,7 @@ import com.mobile.api.dto.ApiMessageDto;
 import com.mobile.api.enumeration.ErrorCode;
 import com.mobile.api.exception.AuthenticationException;
 import com.mobile.api.exception.BusinessException;
+import com.mobile.api.exception.ResourceBadRequestException;
 import com.mobile.api.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +68,20 @@ public class GlobalExceptionHandler {
                 errorCode.getMessage()
         );
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    // Resource Bad Request
+    @ExceptionHandler(ResourceBadRequestException.class)
+    public ResponseEntity<ApiMessageDto<Void>> handleResourceBadRequestException(ResourceBadRequestException ex) {
+        ErrorCode errorCode = ex.getErrorCode();
+
+        ApiMessageDto<Void> response = new ApiMessageDto<>(
+                false,
+                errorCode.getCode(),
+                null,
+                errorCode.getMessage()
+        );
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     // Business Errors

@@ -16,4 +16,10 @@ public class AccountDto {
 
     @Schema(description = "avatar path")
     private String avatarPath;
+
+    @Schema(description = "isSuperAdmin")
+    private Boolean isSuperAdmin;
+
+    @Schema(description = "verified")
+    private Boolean verified;
 }

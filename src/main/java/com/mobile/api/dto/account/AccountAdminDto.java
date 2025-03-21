@@ -21,6 +21,12 @@ public class AccountAdminDto extends BaseAdminDto {
     @Schema(description = "avatar path")
     private String avatarPath;
 
+    @Schema(description = "isSuperAdmin")
+    private Boolean isSuperAdmin;
+
+    @Schema(description = "verified")
+    private Boolean verified;
+
     @Schema(description = "group")
     private GroupAdminDto group;
 }

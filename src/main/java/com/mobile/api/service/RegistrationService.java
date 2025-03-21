@@ -26,7 +26,7 @@ public class RegistrationService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     
-    public void createUser(RegistrationForm registrationForm) {
+    public void register(RegistrationForm registrationForm) {
         // Create ACCOUNT
         if (accountRepository.existsByEmail(registrationForm.getEmail())) {
             throw new BusinessException(ErrorCode.ACCOUNT_EMAIL_EXISTED);
