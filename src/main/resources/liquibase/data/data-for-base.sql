@@ -1,3 +1,4 @@
+-- Lien Hue Tien 22110433 --
 -- Dumping data for table db_mobile_midterm.oauth2_registered_client: ~5 rows (approximately)
 INSERT INTO `oauth2_registered_client` (`id`, `client_id`, `client_id_issued_at`, `client_secret`,
                                         `client_secret_expires_at`, `client_name`, `client_authentication_methods`,

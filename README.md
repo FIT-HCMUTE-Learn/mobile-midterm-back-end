@@ -26,8 +26,30 @@ Password.java
 ```
 
 ## PHAM KHANH HUY - 
-
-## NGUYEN THI HONG NHUNG - 
+```
+CategoryController.java
+CategoryAdminDto.java
+CategoryDto.java
+CreateCategoryForm.java
+UpdateCategoryForm.java
+CategoryMapper.java
+Category.java
+CategoryCriteria.java
+CategoryRepository.java
+```
 
 ## LIEN HUE TIEN - 
+```
+data-for-base.sql
+ProductController.java
+ProductAdminDto.java
+ProductAdminDto.java
+CreateProductForm.java
+UpdateProductForm.java
+ProductMapper.java
+ProductRepository.java
+Product.java
+ProductCriteria.java
+```
+
 

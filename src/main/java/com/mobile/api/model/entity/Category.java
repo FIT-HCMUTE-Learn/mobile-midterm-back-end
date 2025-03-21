@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * PHAM KHANH HUY - 22110336
+ */
+
 @Entity
 @Table(name = "db_mobile_midterm_category")
 @Getter
