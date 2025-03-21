@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
-
+/**
+ * LIEN HUE TIEN - 22110433
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ProductAdminDto extends BaseAdminDto {
