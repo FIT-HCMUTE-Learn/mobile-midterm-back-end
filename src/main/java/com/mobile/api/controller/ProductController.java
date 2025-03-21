@@ -26,8 +26,9 @@ import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 /**
- * LIEN HUE TIEN - 22110433
+ * PHAM KHANH HUY - 22110336
  */
 @RestController
 @RequestMapping("/api/v1/product")

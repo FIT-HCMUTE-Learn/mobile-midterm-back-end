@@ -4,8 +4,9 @@ import com.mobile.api.model.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
+
 /**
- * LIEN HUE TIEN - 22110433
+ * PHAM KHANH HUY - 22110336
  */
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
