@@ -8,6 +8,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
 
+/**
+ * LE HONG PHUC - 22110399
+ */
 @Entity
 @Table(name = "otp_codes")
 @Getter

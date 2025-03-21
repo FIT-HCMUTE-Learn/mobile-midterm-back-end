@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
+/**
+ * LE HONG PHUC - 22110399
+ */
 @Data
 @Schema(description = "Registration Form")
 @JsonIgnoreProperties(ignoreUnknown = true)

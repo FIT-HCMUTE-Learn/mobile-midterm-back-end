@@ -2,6 +2,9 @@ package com.mobile.api.utils;
 
 import java.security.SecureRandom;
 
+/**
+ * LE HONG PHUC - 22110399
+ */
 public class OtpUtils {
     private static final SecureRandom random = new SecureRandom();
 
