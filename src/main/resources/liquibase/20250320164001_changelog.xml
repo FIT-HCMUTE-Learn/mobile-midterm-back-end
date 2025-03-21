@@ -29,17 +29,4 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Authentication" id="1742488825363-3">
-        <addColumn tableName="db_mobile_midterm_user">
-            <column name="fullName" type="varchar(255)"/>
-        </addColumn>
-    </changeSet>
-    <changeSet author="Authentication" id="1742488825363-10">
-        <addColumn tableName="db_mobile_midterm_account">
-            <column name="verified" type="bit"/>
-        </addColumn>
-    </changeSet>
-    <changeSet author="Authentication" id="1742488825363-11">
-        <addUniqueConstraint columnNames="email" constraintName="UC_OTP_CODESEMAIL_COL" tableName="otp_codes"/>
-    </changeSet>
 </databaseChangeLog>

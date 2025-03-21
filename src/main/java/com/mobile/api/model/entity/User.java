@@ -23,6 +23,7 @@ public class User extends Auditable<String> {
     @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
     private Account account;
 
+    @Column(name = "full_name")
     private String fullName;
 
     private Integer gender;

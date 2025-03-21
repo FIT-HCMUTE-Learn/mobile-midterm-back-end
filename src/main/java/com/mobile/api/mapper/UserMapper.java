@@ -41,6 +41,7 @@ public interface UserMapper {
     void updateFromUpdateUserForm(@MappingTarget User user, UpdateUserForm updateUserForm);
 
     @Mapping(source = "account", target = "account", qualifiedByName = "fromEntityToAccountDto")
+    @Mapping(source = "fullName", target = "fullName")
     @Mapping(source = "gender", target = "gender")
     @Mapping(source = "birthday", target = "birthday")
     @BeanMapping(ignoreByDefault = true)
@@ -49,6 +50,7 @@ public interface UserMapper {
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "account", target = "account", qualifiedByName = "fromEntityToAccountAdminDto")
+    @Mapping(source = "fullName", target = "fullName")
     @Mapping(source = "gender", target = "gender")
     @Mapping(source = "birthday", target = "birthday")
     @Mapping(source = "createdDate", target = "createdDate")

@@ -45,6 +45,6 @@ public class CreateUserAdminForm {
     @UserGender(allowNull = true)
     private Integer gender;
 
-    @Schema(description = "Birthday", example = "2000-03-25T00:00:00", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @Schema(description = "Birthday", example = "2000-03-25 00:00:00", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     private LocalDateTime birthday;
 }

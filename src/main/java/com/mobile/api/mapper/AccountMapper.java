@@ -49,6 +49,8 @@ public interface AccountMapper {
     @Mapping(source = "email", target = "email")
     @Mapping(source = "phone", target = "phone")
     @Mapping(source = "avatarPath", target = "avatarPath")
+    @Mapping(source = "isSuperAdmin", target = "isSuperAdmin")
+    @Mapping(source = "verified", target = "verified")
     @BeanMapping(ignoreByDefault = true)
     @Named("fromEntityToAccountDto")
     AccountDto fromEntityToAccountDto(Account account);
@@ -58,6 +60,8 @@ public interface AccountMapper {
     @Mapping(source = "email", target = "email")
     @Mapping(source = "phone", target = "phone")
     @Mapping(source = "avatarPath", target = "avatarPath")
+    @Mapping(source = "isSuperAdmin", target = "isSuperAdmin")
+    @Mapping(source = "verified", target = "verified")
     @Mapping(source = "group", target = "group", qualifiedByName = "fromEntityToGroupAdminDtoInAccount")
     @Mapping(source = "createdDate", target = "createdDate")
     @Mapping(source = "modifiedDate", target = "modifiedDate")

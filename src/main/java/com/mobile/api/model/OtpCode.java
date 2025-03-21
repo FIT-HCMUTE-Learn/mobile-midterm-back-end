@@ -18,10 +18,8 @@ public class OtpCode extends Auditable<String> {
     @GenericGenerator(name = "idGenerator", type = com.mobile.api.service.id.IdGenerator.class)
     private Long id;
 
-    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
     private String otp;
 
     @Column(name = "expiry_time")
