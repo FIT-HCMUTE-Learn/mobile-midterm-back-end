@@ -54,6 +54,7 @@ public interface CategoryMapper {
     @Mapping(source = "kind", target = "kind")
     @Mapping(source = "createdDate", target = "createdDate")
     @Mapping(source = "modifiedDate", target = "modifiedDate")
+    @Mapping(source = "status", target = "status")
     @BeanMapping(ignoreByDefault = true)
     @Named("fromEntityToCategoryAdminDto")
     CategoryAdminDto fromEntityToCategoryAdminDto(Category category);
