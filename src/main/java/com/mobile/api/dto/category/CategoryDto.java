@@ -1,15 +1,10 @@
 package com.mobile.api.dto.category;
 
-import com.mobile.api.dto.BaseAdminDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.util.Date;
-
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class CategoryDto extends BaseAdminDto {
+public class CategoryDto {
     @Schema(description = "id")
     private Long id;
 

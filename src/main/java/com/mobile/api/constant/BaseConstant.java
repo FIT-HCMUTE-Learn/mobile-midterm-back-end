@@ -35,7 +35,9 @@ public class BaseConstant {
     /**
      * CATEGORY_KIND constants
      */
-    public static final Integer CATEGORY_KIND_MAIN_DISH = 1;
-    public static final Integer CATEGORY_KIND_DRINK = 2;
+    public static final Integer CATEGORY_KIND_BEEF = 1;
+    public static final Integer CATEGORY_KIND_CHICKEN = 2;
     public static final Integer CATEGORY_KIND_DESSERT = 3;
+    public static final Integer CATEGORY_KIND_LAMB = 4;
+    public static final Integer CATEGORY_KIND_MISCELLANEOUS = 5;
 }

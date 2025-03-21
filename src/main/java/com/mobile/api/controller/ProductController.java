@@ -13,7 +13,9 @@ import com.mobile.api.form.product.CreateProductForm;
 import com.mobile.api.form.product.UpdateProductForm;
 import com.mobile.api.mapper.ProductMapper;
 import com.mobile.api.model.criteria.ProductCriteria;
+import com.mobile.api.model.entity.Category;
 import com.mobile.api.model.entity.Product;
+import com.mobile.api.repository.CategoryRepository;
 import com.mobile.api.repository.ProductRepository;
 import com.mobile.api.utils.ApiMessageUtils;
 import jakarta.validation.Valid;
@@ -32,6 +34,8 @@ public class ProductController extends BaseController {
     @Autowired
     private ProductRepository productRepository;
     @Autowired
+    private CategoryRepository categoryRepository;
+    @Autowired
     private ProductMapper productMapper;
 
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -44,6 +48,22 @@ public class ProductController extends BaseController {
 
         PaginationDto<ProductAdminDto> responseDto = new PaginationDto<>(
                 productMapper.fromEntitiesToProductAdminDtoList(pageData.getContent()),
+                pageData.getTotalElements(),
+                pageData.getTotalPages()
+        );
+
+        return ApiMessageUtils.success(responseDto, "Get product list successfully");
+    }
+
+    @GetMapping(value = "/client-list", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ApiMessageDto<PaginationDto<ProductDto>> getListForClient(
+            @Valid @ModelAttribute ProductCriteria productCriteria,
+            Pageable pageable
+    ) {
+        Page<Product> pageData = productRepository.findAll(productCriteria.getSpecification(), pageable);
+
+        PaginationDto<ProductDto> responseDto = new PaginationDto<>(
+                productMapper.fromEntitiesToProductDtoList(pageData.getContent()),
                 pageData.getTotalElements(),
                 pageData.getTotalPages()
         );
@@ -77,8 +97,11 @@ public class ProductController extends BaseController {
         if (productRepository.existsByNameAndStatus(createProductForm.getName(), BaseConstant.STATUS_ACTIVE)) {
             throw new ResourceBadRequestException(ErrorCode.PRODUCT_NAME_EXISTED);
         }
+        Category category = categoryRepository.findById(createProductForm.getCategoryId())
+                .orElseThrow(() -> new ResourceNotFoundException(ErrorCode.CATEGORY_NOT_FOUND));
         // Create PRODUCT
         Product product = productMapper.fromCreateProductForm(createProductForm);
+        product.setCategory(category);
         productRepository.save(product);
 
         return ApiMessageUtils.success(null, "Create product successfully");
@@ -98,8 +121,13 @@ public class ProductController extends BaseController {
                 throw new ResourceBadRequestException(ErrorCode.PRODUCT_NAME_EXISTED);
             }
         }
-        // Update PRODUCT
         productMapper.updateFromUpdateProductForm(product, updateProductForm);
+        if (!product.getCategory().getId().equals(updateProductForm.getCategoryId())) {
+            Category category = categoryRepository.findById(updateProductForm.getCategoryId())
+                    .orElseThrow(() -> new ResourceNotFoundException(ErrorCode.CATEGORY_NOT_FOUND));
+            product.setCategory(category);
+        }
+        // Update PRODUCT
         productRepository.save(product);
 
         return ApiMessageUtils.success(null, "Update product successfully");
