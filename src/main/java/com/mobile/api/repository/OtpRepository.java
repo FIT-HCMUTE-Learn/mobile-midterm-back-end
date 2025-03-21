@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+/**
+ * LE HONG PHUC - 22110399
+ */
 @Repository
 public interface OtpRepository extends JpaRepository<OtpCode, Long> {
     Optional<OtpCode> findByEmailAndOtp(String email, String otp);

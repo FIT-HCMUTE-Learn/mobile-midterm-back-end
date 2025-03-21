@@ -21,6 +21,7 @@ public class ProductCriteria extends BaseCriteria<Product> {
 
     private String name;
     private String description;
+    private Long categoryId;
     private String categoryName;
 
     @Override
@@ -34,6 +35,10 @@ public class ProductCriteria extends BaseCriteria<Product> {
             }
             if (StringUtils.hasText(getDescription())) {
                 predicates.add(cb.like(cb.lower(root.get("description")), "%" + getDescription().toLowerCase() + "%"));
+            }
+            if (getCategoryId() != null) {
+                Join<Product, Category> categoryJoin = root.join("category", JoinType.INNER);
+                predicates.add(cb.equal(categoryJoin.get("id"), getCategoryId()));
             }
             if (StringUtils.hasText(getCategoryName())) {
                 Join<Product, Category> categoryJoin = root.join("category", JoinType.INNER);

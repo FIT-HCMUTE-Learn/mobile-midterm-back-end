@@ -94,6 +94,8 @@ oauth2-config:
   error-uri: "/error"
   callback-uri: "/home"
   registration-uri: "/api/register"
+  verify-otp-uri: "/api/verify-otp"
+  resend-otp-uri: "/api/resend-otp"
   custom-login-uri: "/api/login"
   forgot-password-uri: "/api/forgot-password"
   request-forgot-password-uri: "/api/request-forgot-password"

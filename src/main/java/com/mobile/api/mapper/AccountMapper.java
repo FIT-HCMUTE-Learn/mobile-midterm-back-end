@@ -11,6 +11,9 @@ import org.mapstruct.*;
 
 import java.util.List;
 
+/**
+ * LE HONG PHUC - 22110399
+ */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         uses = {GroupMapper.class})

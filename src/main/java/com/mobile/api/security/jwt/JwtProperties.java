@@ -26,6 +26,8 @@ public class JwtProperties {
     private String errorUri;
     private String callbackUri;
     private String registrationUri;
+    private String verifyOtpUri;
+    private String resendOtpUri;
     private String customLoginUri;
     private String forgotPasswordUri;
     private String requestForgotPasswordUri;
