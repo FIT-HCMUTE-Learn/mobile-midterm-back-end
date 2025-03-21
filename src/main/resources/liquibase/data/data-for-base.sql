@@ -40,20 +40,20 @@ INSERT INTO `db_mobile_midterm_permission` (`id`, `created_by`, `created_date`, 
 	(8286952140406784, 'super_admin', '2025-03-10T03:28:40', 'super_admin', '2025-03-10T03:28:40', 1, '/api/v1/user/delete', 'USE_DEL', 'Delete user', 'Delete user', 'User', b'0');
 
 -- Dumping data for table db_mobile_midterm.db_mobile_midterm_account: ~ rows (approximately)
-INSERT INTO `db_mobile_midterm_account` (`id`, `created_by`, `created_date`, `modified_by`, `modified_date`, `status`, `avatar_path`, `email`, `is_super_admin`, `password`, `phone`, `username`, `group_id`) VALUES
-	(8274182432555008, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '/image/avatar/super_admin', 'super_admin@gmail.com', b'1', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0123456789', 'super_admin', 8274172085239808),
-	(8274185907273728, 'super_admin', '2025-03-10T15:16:25', 'super_admin', '2025-03-10T15:16:25', 1, '/image/avatar/admin', 'admin@gmail.com', b'0', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0987654321', 'admin', 8274172436414464),
-	(8274188362824639, 'super_admin', '2025-03-10T15:16:25', 'super_admin', '2025-03-10T15:16:25', 1, '/image/avatar/admin', 'manager@gmail.com', b'0', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0538227546', 'manager', 8274172862824448),
-	(8274180735929377, 'super_admin', '2025-03-10T15:16:25', 'super_admin', '2025-03-10T15:16:25', 1, '/image/avatar/admin', 'internal@gmail.com', b'0', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0735289218', 'internal', 8274173363322880),
-	(8274185907263427, 'super_admin', '2025-03-10T15:17:25', 'super_admin', '2025-03-10T15:17:25', 1, '/image/avatar/user', 'user@gmail.com', b'0', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0246813579', 'user', 8274173680582656);
+INSERT INTO `db_mobile_midterm_account` (`id`, `created_by`, `created_date`, `modified_by`, `modified_date`, `status`, `avatar_path`, `email`, `is_super_admin`, `password`, `phone`, `username`, `group_id`, `verified`) VALUES
+	(8274182432555008, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '/image/avatar/super_admin', 'super_admin@gmail.com', b'1', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0123456789', 'super_admin', 8274172085239808, b'1'),
+	(8274185907273728, 'super_admin', '2025-03-10T15:16:25', 'super_admin', '2025-03-10T15:16:25', 1, '/image/avatar/admin', 'admin@gmail.com', b'0', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0987654321', 'admin', 8274172436414464, b'1'),
+	(8274188362824639, 'super_admin', '2025-03-10T15:16:25', 'super_admin', '2025-03-10T15:16:25', 1, '/image/avatar/admin', 'manager@gmail.com', b'0', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0538227546', 'manager', 8274172862824448, b'1'),
+	(8274180735929377, 'super_admin', '2025-03-10T15:16:25', 'super_admin', '2025-03-10T15:16:25', 1, '/image/avatar/admin', 'internal@gmail.com', b'0', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0735289218', 'internal', 8274173363322880, b'1'),
+	(8274185907263427, 'super_admin', '2025-03-10T15:17:25', 'super_admin', '2025-03-10T15:17:25', 1, '/image/avatar/user', 'user@gmail.com', b'0', '$2a$12$mp9n9/fCtOI5hDDuUx3uMOYYepGUwlXzY5A1F4x5pLiz9Q8uhRguW', '0246813579', 'user', 8274173680582656, b'0');
 
 -- Dumping data for table db_mobile_midterm.db_mobile_midterm_user: ~5 rows (approximately)
-INSERT INTO `db_mobile_midterm_user` (`id`, `created_by`, `created_date`, `modified_by`, `modified_date`, `status`, `birthday`, `gender`) VALUES
-	(8274182432555008, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-03-25T00:00:00', 1),
-	(8274185907273728, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-11-25T00:00:00', 1),
-	(8274188362824639, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-06-10T00:00:00', 1),
-	(8274180735929377, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-05-15T00:00:00', 1),
-	(8274185907263427, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-11-09T00:00:00', 1);
+INSERT INTO `db_mobile_midterm_user` (`id`, `created_by`, `created_date`, `modified_by`, `modified_date`, `status`, `birthday`, `gender`, `full_name`) VALUES
+	(8274182432555008, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-03-25T00:00:00', 1, 'Super Admin'),
+	(8274185907273728, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-11-25T00:00:00', 1, 'Admin'),
+	(8274188362824639, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-06-10T00:00:00', 1, 'Manager'),
+	(8274180735929377, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-05-15T00:00:00', 1, 'Internal'),
+	(8274185907263427, 'super_admin', '2025-03-10T15:15:25', 'super_admin', '2025-03-10T15:15:25', 1, '2000-11-09T00:00:00', 1, 'User');
 
 -- Dumping data for table db_mobile_midterm.db_mobile_midterm_permission_group: ~58 rows (approximately)
 INSERT INTO `db_mobile_midterm_permission_group` (`group_id`, `permission_id`) VALUES
@@ -79,6 +79,7 @@ INSERT INTO `db_mobile_midterm_permission_group` (`group_id`, `permission_id`) V
 	(8274172085239808, 8286951021084672),
 	(8274172085239808, 8286951655669760),
 	(8274172085239808, 8286952140406784),
+
     (8274172436414464, 8274175207243776),
 	(8274172436414464, 8274175633620992),
 	(8274172436414464, 8274176145981440),
@@ -97,6 +98,7 @@ INSERT INTO `db_mobile_midterm_permission_group` (`group_id`, `permission_id`) V
 	(8274172436414464, 8286951021084672),
 	(8274172436414464, 8286951655669760),
 	(8274172436414464, 8286952140406784),
+
     (8274172862824448, 8274175207243776),
    	(8274172862824448, 8274175633620992),
    	(8274172862824448, 8274176145981440),
@@ -109,6 +111,7 @@ INSERT INTO `db_mobile_midterm_permission_group` (`group_id`, `permission_id`) V
    	(8274172862824448, 8286950515507200),
    	(8274172862824448, 8286951021084672),
    	(8274172862824448, 8286951655669760),
+
     (8274173363322880, 8274175207243776),
     (8274173363322880, 8274175633620992),
     (8274173363322880, 8286938957348864),

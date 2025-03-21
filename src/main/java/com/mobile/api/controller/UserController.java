@@ -161,13 +161,6 @@ public class UserController extends BaseController {
             }
             account.setEmail(updateUserAdminForm.getEmail());
         }
-        if (StringUtils.isNoneBlank(updateUserAdminForm.getPassword())) {
-            if (!passwordEncoder.matches(updateUserAdminForm.getPassword(), account.getPassword())) {
-                account.setPassword(passwordEncoder.encode(updateUserAdminForm.getPassword()));
-                customRegisteredClientRepository.updateClientSecret(registeredClient.getId(),
-                        passwordEncoder.encode(updateUserAdminForm.getPassword()));
-            }
-        }
         account.setPhone(updateUserAdminForm.getPhone());
         account.setAvatarPath(updateUserAdminForm.getAvatarPath());
         if (!Objects.equals(account.getGroup().getId(), updateUserAdminForm.getGroupId())) {
@@ -214,13 +207,6 @@ public class UserController extends BaseController {
             }
             account.setEmail(updateUserForm.getEmail());
         }
-        if (StringUtils.isNoneBlank(updateUserForm.getPassword())) {
-            if (!passwordEncoder.matches(updateUserForm.getPassword(), account.getPassword())) {
-                account.setPassword(passwordEncoder.encode(updateUserForm.getPassword()));
-                customRegisteredClientRepository.updateClientSecret(registeredClient.getId(),
-                        passwordEncoder.encode(updateUserForm.getPassword()));
-            }
-        }
         account.setPhone(updateUserForm.getPhone());
         account.setAvatarPath(updateUserForm.getAvatarPath());
         accountRepository.save(account);
@@ -242,6 +228,8 @@ public class UserController extends BaseController {
                 .orElseThrow(() -> new ResourceNotFoundException(ErrorCode.USER_NOT_FOUND));
 
         Account account = user.getAccount();
+        RegisteredClient registeredClient = customRegisteredClientRepository.findByClientId(account.getUsername());
+        assert registeredClient != null;
         if (StringUtils.isNoneBlank(updatePasswordForm.getPassword())
                 || StringUtils.isNoneBlank(updatePasswordForm.getOldPassword())) {
             if (!StringUtils.isNoneBlank(updatePasswordForm.getOldPassword())) {
@@ -255,6 +243,8 @@ public class UserController extends BaseController {
                 }
                 if (!passwordEncoder.matches(updatePasswordForm.getPassword(), account.getPassword())) {
                     account.setPassword(passwordEncoder.encode(updatePasswordForm.getPassword()));
+                    customRegisteredClientRepository.updateClientSecret(registeredClient.getId(),
+                            passwordEncoder.encode(updatePasswordForm.getPassword()));
                 }
             }
         }

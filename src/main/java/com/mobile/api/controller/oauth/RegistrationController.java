@@ -7,7 +7,6 @@ import com.mobile.api.exception.ResourceNotFoundException;
 import com.mobile.api.form.RegistrationForm;
 import com.mobile.api.form.VerifyOtpForm;
 import com.mobile.api.model.entity.Account;
-import com.mobile.api.model.entity.User;
 import com.mobile.api.repository.AccountRepository;
 import com.mobile.api.service.OtpService;
 import com.mobile.api.service.RegistrationService;
@@ -38,7 +37,7 @@ public class RegistrationController {
             @Valid @RequestBody RegistrationForm registrationForm,
             BindingResult bindingResult
     ) {
-        registrationService.createUser(registrationForm);
+        registrationService.register(registrationForm);
         clientRegistrationService.registerClientForUser(registrationForm.getEmail(), registrationForm.getPassword());
         otpService.sendOTPEmail(registrationForm.getEmail());
 

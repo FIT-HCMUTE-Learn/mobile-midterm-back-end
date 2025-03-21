@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <include file="db.changelog-1.0.0.xml" relativeToChangelogFile="true"/>
-    <include file="20250320163909_diff.xml" relativeToChangelogFile="true"/>
+    <include file="20250320163909_changelog.xml" relativeToChangelogFile="true"/>
     <include file="20250320164001_changelog.xml" relativeToChangelogFile="true"/>
     <include file="20250320171231_changelog.xml" relativeToChangelogFile="true"/>
 

@@ -3,6 +3,7 @@ package com.mobile.api.form.user;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mobile.api.validation.Password;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
@@ -14,8 +15,7 @@ public class UpdatePasswordForm {
     @Password(allowNull = false)
     private String password;
 
-    @Schema(description = "Old password (must be at least 8 characters, include uppercase, lowercase, digit, and special character)",
-            example = "OldP@ssw0rd", requiredMode = Schema.RequiredMode.REQUIRED)
-    @Password(allowNull = false)
+    @Schema(description = "Old password", example = "OldP@ssw0rd", requiredMode = Schema.RequiredMode.REQUIRED)
+    @NotEmpty(message = "Old password can not be empty")
     private String oldPassword;
 }

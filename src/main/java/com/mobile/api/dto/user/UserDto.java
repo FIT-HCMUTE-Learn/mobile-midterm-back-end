@@ -11,6 +11,9 @@ public class UserDto {
     @Schema(description = "account")
     private AccountDto account;
 
+    @Schema(description = "fullName")
+    private String fullName;
+
     @Schema(description = "gender")
     private Integer gender;
 
