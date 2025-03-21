@@ -8,8 +8,9 @@ import com.mobile.api.model.entity.Product;
 import org.mapstruct.*;
 
 import java.util.List;
+
 /**
- * LIEN HUE TIEN - 22110433
+ * PHAM KHANH HUY - 22110336
  */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
