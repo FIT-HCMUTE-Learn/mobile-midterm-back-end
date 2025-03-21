@@ -46,6 +46,7 @@ public interface ProductMapper {
     @Mapping(source = "category", target = "category", qualifiedByName = "fromEntityToCategoryDto")
     @Mapping(source = "createdDate", target = "createdDate")
     @Mapping(source = "modifiedDate", target = "modifiedDate")
+    @Mapping(source = "status", target = "status")
     @BeanMapping(ignoreByDefault = true)
     @Named("fromEntityToProductAdminDto")
     ProductAdminDto fromEntityToProductAdminDto(Product product);
