@@ -49,6 +49,7 @@ public class SecurityConfig {
                                 jwtProperties.getErrorUri(),
                                 jwtProperties.getRegistrationUri(),
                                 jwtProperties.getVerifyOtpUri(),
+                                jwtProperties.getResendOtpUri(),
                                 jwtProperties.getCustomLoginUri(),
                                 jwtProperties.getForgotPasswordUri(),
                                 jwtProperties.getRequestForgotPasswordUri()
