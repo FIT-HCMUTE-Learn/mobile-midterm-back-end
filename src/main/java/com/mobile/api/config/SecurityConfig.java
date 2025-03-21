@@ -36,6 +36,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
+                .requiresChannel(channel ->
+                        channel.anyRequest().requiresSecure() // HTTPS
+                )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 jwtProperties.getTokenUri(),
