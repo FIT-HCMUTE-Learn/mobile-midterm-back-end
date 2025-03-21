@@ -17,9 +17,13 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * LE HONG PHUC - 22110399
+ */
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -34,6 +38,7 @@ public class RegistrationController {
     private ClientRegistrationService clientRegistrationService;
     
     @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Transactional
     public ApiMessageDto<String> registerUser(
             @Valid @RequestBody RegistrationForm registrationForm,
             BindingResult bindingResult
@@ -71,5 +76,4 @@ public class RegistrationController {
         otpService.sendOTPEmail(resendOtpForm.getEmail());
         return ApiMessageUtils.success(null, "OTP resend to email: " + resendOtpForm.getEmail());
     }
-
 }

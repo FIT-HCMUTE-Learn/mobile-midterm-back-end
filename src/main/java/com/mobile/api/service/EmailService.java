@@ -5,6 +5,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+/**
+ * LE HONG PHUC - 22110399
+ */
 @Service
 public class EmailService {
     @Autowired

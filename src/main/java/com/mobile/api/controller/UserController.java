@@ -22,7 +22,6 @@ import com.mobile.api.repository.AccountRepository;
 import com.mobile.api.repository.GroupRepository;
 import com.mobile.api.repository.UserRepository;
 import com.mobile.api.security.custom.CustomRegisteredClientRepository;
-import com.mobile.api.service.EmailService;
 import com.mobile.api.utils.ApiMessageUtils;
 import jakarta.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
@@ -40,6 +39,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * LE HONG PHUC - 22110399
+ */
 @RestController
 @RequestMapping("/api/v1/user")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
