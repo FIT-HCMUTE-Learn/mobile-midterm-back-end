@@ -16,6 +16,10 @@ import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PHAM KHANH HUY - 22110336
+ */
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class CategoryCriteria extends BaseCriteria<Category> {
