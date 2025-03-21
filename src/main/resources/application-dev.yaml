@@ -1,5 +1,11 @@
 server:
-  port: 8080
+  port: ${SPRING_SERVER_PORT:8080}
+  ssl:
+    enabled: true
+    key-store: ${SSL_KEY_STORE}
+    key-alias: ${SSL_KEY_ALIAS}
+    key-store-type: ${SSL_KEY_STORE_TYPE}
+    key-store-password: ${SSL_KEY_PASSWORD}
   servlet:
     context-path: /
 
@@ -82,7 +88,7 @@ oauth2-config:
   refresh-token-expiration: 2592000000
   private-key: ${SECURITY_PRIVATE_KEY}
   public-key: ${SECURITY_PUBLIC_KEY}
-  base-url: "http://localhost:8080"
+  base-url: ${SPRING_SERVER_URL}
   token-uri: "/api/oauth2/token"
   authorization-uri: "/api/oauth2/authorize"
   token-introspection-uri: "/api/oauth2/introspect"
